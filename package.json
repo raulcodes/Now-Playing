@@ -1,22 +1,20 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "now-playing",
+  "productName": "Now Playing",
+  "version": "0.1.0",
+  "description": "A minimal Spotify Visualizer",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "watch": "webpack-dev-server --mode development",
     "build": "webpack"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/raulcodes/Now-Playing",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Spotify"
   ],
-  "author": "GitHub",
+  "author": "Raul Camacho",
   "license": "CC0-1.0",
   "devDependencies": {
     "@babel/cli": "^7.1.5",
