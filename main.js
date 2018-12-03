@@ -4,32 +4,28 @@ const {app, BrowserWindow} = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-// let tray = null
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    x: null,
-    y: null,
     width: 200,
     height: 200,
-    minWidth: 100,
+    minWidth: 150,
+    minHeight: 150,
     maxWidth: 400,
-    minHeight: 100,
     maxHeight: 400,
     acceptFirstMouse: true,
     alwaysOnTop: true,
-    focusable: false,
     frame: false,
-    // transparent: true,
-    resizable: true,
-    show: false, // prevents flash of white
+    show: false,
     title: 'Now Playing'
-    // backgroundColor: 'black'
   })
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
+
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools()
 
   // Move window across desktops when switching
   mainWindow.setVisibleOnAllWorkspaces(true)
@@ -41,9 +37,6 @@ function createWindow () {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -57,22 +50,11 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-// app.on('ready', () => {
-//   createWindow()
-//   tray = new Tray('./logo.png')
-//   const contextMenu = Menu.buildFromTemplate([
-//     {label: 'Item1', type: 'radio'},
-//     {label: 'Item2', type: 'radio'},
-//     {label: 'Item3', type: 'radio', checked: true},
-//     {label: 'Item4', type: 'radio'}
-//   ])
-//   tray.setToolTip('This is my application.')
-//   tray.setContextMenu(contextMenu)
-// })
+app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  // On OS X it is common for applications and their menu bar
+  // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit()
@@ -80,7 +62,7 @@ app.on('window-all-closed', function () {
 })
 
 app.on('activate', function () {
-  // On OS X it's common to re-create a window in the app when the
+  // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
     createWindow()
