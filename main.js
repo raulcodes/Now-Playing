@@ -9,11 +9,11 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 200,
-    height: 200,
-    minWidth: 150,
-    minHeight: 150,
-    maxWidth: 400,
-    maxHeight: 400,
+    height: 300,
+    minWidth: 200,
+    minHeight: 300,
+    // maxWidth: 400,
+    maxHeight: 500,
     acceptFirstMouse: true,
     alwaysOnTop: true,
     frame: false,
@@ -25,13 +25,13 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Move window across desktops when switching
   mainWindow.setVisibleOnAllWorkspaces(true)
 
   // Maintain square window ratio
-  mainWindow.setAspectRatio(1.0, { width: 0, height: 0 })
+  mainWindow.setAspectRatio(0.66)
 
   // Only show window when it's ready; prevents flash of white
   mainWindow.on('ready-to-show', () => {

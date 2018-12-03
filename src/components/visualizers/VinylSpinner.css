@@ -1,0 +1,71 @@
+.art-shadow {
+  width: 80%;
+  height: 80%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 18px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  background: black;
+}
+
+.vinyl-label {
+  text-align: center;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  /* -webkit-animation:spin 20s linear infinite;
+  -moz-animation:spin 20s linear infinite;
+  animation:spin 20s linear infinite; */
+}
+
+.vinyl-hole {
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+#artwork {
+  width: 95%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-animation:spin 17s linear infinite;
+  -moz-animation:spin 17s linear infinite;
+  animation:spin 17s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.stopped {
+  animation-play-state: paused !important;
+}
+
+.playing {
+  animation-play-state: running !important;
+}

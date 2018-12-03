@@ -18,5 +18,8 @@ module.exports = {
       { test: /\.css$/, exclude: /node_modules/, use: [ 'style-loader', 'css-loader' ]},
       { test: /\.applescript$/, loader: "file-loader"}
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   }
 };
