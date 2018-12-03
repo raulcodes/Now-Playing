@@ -48,9 +48,10 @@ class App extends Component {
       let artwork = state.artwork_url
 
       if(this.state.artwork !== artwork) {
+        let color
         Vibrant.from(artwork).getPalette((err, palette) => {
-          console.log(palette)
-          this.setState({ bgColor: palette.LightMuted.getHex() })
+          (palette.Vibrant != null) ? (color = palette.Vibrant.getHex()) : (color = palette.Muted.getHex())
+          this.setState({ bgColor: color })
         })
       }
 
@@ -71,7 +72,7 @@ class App extends Component {
     return (
       <div
         id="container"
-        style={{background: `linear-gradient(${this.shadeColor2(this.state.bgColor, 1)}, ${this.state.bgColor}`}}>
+        style={{background: `linear-gradient(${this.shadeColor2(this.state.bgColor, 0.3)}, ${this.state.bgColor}`}}>
         <div id="viz-container">
           <VinylSpinner
             artwork_url={this.state.artwork}
@@ -80,10 +81,11 @@ class App extends Component {
             artwork_url='test_art.jpeg'
             playback='playing' /> */}
         </div>
-        <div id="controller-container">
+        <div id="controller-container" style={{color: this.shadeColor2(this.state.bgColor, 0.8)}}>
           <DefaultController
             track={this.state.track}
             artist={this.state.artist}
+            playback={this.state.playback}
           />
           {/* <DefaultController
             track='Love Story'

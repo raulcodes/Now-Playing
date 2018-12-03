@@ -9,7 +9,7 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 200,
-    height: 300,
+    height: 325,
     minWidth: 200,
     minHeight: 300,
     // maxWidth: 400,
@@ -31,7 +31,7 @@ function createWindow () {
   mainWindow.setVisibleOnAllWorkspaces(true)
 
   // Maintain square window ratio
-  mainWindow.setAspectRatio(0.66)
+  mainWindow.setAspectRatio(0.62)
 
   // Only show window when it's ready; prevents flash of white
   mainWindow.on('ready-to-show', () => {

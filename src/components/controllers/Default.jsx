@@ -19,14 +19,26 @@ const previous = () => {
 }
 
 const DefaultController = (props) => {
+  let playBackIcon = (props.playback == 'playing') ? 'fa-pause' : 'fa-play'
+
   return(
     <Fragment>
       <h2 id="track-name">{props.track}</h2>
       <h3 id="artist-name">{props.artist}</h3>
-      <button onClick={previous}>Prev</button>
-      <button onClick={play}>Play</button>
-      <button onClick={pause}>Pause</button>
-      <button onClick={next}>Next</button>
+      <div id="btn-row">
+        <div className="playback-btn" onClick={previous}>
+          <i className={`fas fa-backward`}></i>
+        </div>
+        <div
+          className="playback-btn"
+          onClick={props.playback == 'playing' ? pause : play}
+          >
+          <i className={`fas ${playBackIcon}`}></i>
+        </div>
+        <div className="playback-btn" onClick={next}>
+          <i className={`fas fa-forward`}></i>
+        </div>
+      </div>
     </Fragment>
   )
 }
