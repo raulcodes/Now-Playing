@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "node-vibrant": "^3.0.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "spotify-node-applescript": "^1.1.1"

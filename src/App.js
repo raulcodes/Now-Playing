@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import VinylSpinner from './components/visualizers/VinylSpinner';
 import DefaultController from './components/controllers/Default';
 const spotify = require('spotify-node-applescript')
+import * as Vibrant from 'node-vibrant'
 import './App.css'
 
 class App extends Component {
@@ -14,12 +15,14 @@ class App extends Component {
       artwork: '',
       artist: '',
       playback: '',
-      isRunning: false
+      isRunning: false,
+      bgColor: ''
     };
 
     this.updateTrack = this.updateTrack.bind(this)
     this.getPlaybackState = this.getPlaybackState.bind(this)
     this.startPoll = this.startPoll.bind(this)
+    this.shadeColor2 = this.shadeColor2.bind(this)
   }
 
   componentDidMount() {
@@ -42,17 +45,33 @@ class App extends Component {
 
   updateTrack() {
     spotify.getTrack((err, state) => {
+      let artwork = state.artwork_url
+
+      if(this.state.artwork !== artwork) {
+        Vibrant.from(artwork).getPalette((err, palette) => {
+          console.log(palette)
+          this.setState({ bgColor: palette.LightMuted.getHex() })
+        })
+      }
+
       this.setState({
-        artwork: state.artwork_url,
+        artwork: artwork,
         track: state.name,
-        artist: state.artist
+        artist: state.artist,
       })
     })
   }
 
+  shadeColor2(color, percent) {
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+  }
+
   render() {
     return (
-      <div id="container">
+      <div
+        id="container"
+        style={{background: `linear-gradient(${this.shadeColor2(this.state.bgColor, 1)}, ${this.state.bgColor}`}}>
         <div id="viz-container">
           <VinylSpinner
             artwork_url={this.state.artwork}
