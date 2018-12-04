@@ -1,13 +1,15 @@
 {
   "name": "now-playing",
   "productName": "Now Playing",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A minimal Spotify Visualizer",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "watch": "webpack-dev-server --mode development",
-    "build": "webpack"
+    "build": "webpack",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=logo.png.icns --prune=true --out=release-builds",
+    "create-installer-mac": "electron-installer-dmg ./release-builds/Now\\ Playing-darwin-x64/Now\\ Playing.app now-playing --out=releases --overwrite --icon=logo.png.icns"
   },
   "repository": "https://github.com/raulcodes/Now-Playing",
   "keywords": [

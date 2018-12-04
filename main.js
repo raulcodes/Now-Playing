@@ -25,7 +25,7 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Move window across desktops when switching
   mainWindow.setVisibleOnAllWorkspaces(true)
