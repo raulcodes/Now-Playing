@@ -32,6 +32,7 @@ class App extends Component {
 
   startPoll() {
     if(this.state.isRunning) {
+      console.log('polling')
       this.getPlaybackState()
       this.updateTrack()
     }
@@ -40,35 +41,48 @@ class App extends Component {
 
   getPlaybackState() {
     spotify.getState((err, playback) => {
-      this.setState({
-        playback: playback.state
-      })
+      if (err == null) {
+        this.setState({
+          playback: playback.state
+        })
+      } else {
+        console.log(err)
+      }
     })
   }
 
   updateTrack() {
+    console.log('hwllo')
     spotify.getTrack((err, state) => {
-      let artwork = state.artwork_url
+      if (err == null) {
+        console.log(state)
+        let artwork = state.artwork_url
 
-      if(this.state.artwork !== artwork) {
-        let color
-        Vibrant.from(artwork).getPalette((err, palette) => {
-          (palette.Vibrant != null) ? (color = palette.Vibrant.getHex()) : (color = palette.Muted.getHex())
-          this.setState({ bgColor: color })
+        if(this.state.artwork !== artwork) {
+          let color
+          Vibrant.from(artwork).getPalette((err, palette) => {
+            (palette.Vibrant != null) ? (color = palette.Vibrant.getHex()) : (color = palette.Muted.getHex())
+            this.setState({ bgColor: color })
+          })
+        }
+
+        this.setState({
+          artwork: artwork,
+          track: state.name,
+          artist: state.artist,
         })
       }
-
-      this.setState({
-        artwork: artwork,
-        track: state.name,
-        artist: state.artist,
-      })
+      console.log(err)
     })
   }
 
   checkSpotifyState = () => {
     spotify.isRunning((err, isRunning) => {
-      this.setState({ isRunning: isRunning })
+      if (err == null) {
+        this.setState({ isRunning: isRunning })
+      } else {
+        console.log(err)
+      }
     })
   }
 
@@ -81,7 +95,7 @@ class App extends Component {
     return (
       !this.state.isRunning ? (
         <div id="prompt-container">
-          <h3>Ensure that Spotify is running, then click</h3>
+          <h3>Ensure that Spotify is running, then clickk</h3>
           <button onClick={this.checkSpotifyState}>here</button>
         </div>
       ) : (
