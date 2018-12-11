@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import VinylSpinner from './components/visualizers/VinylSpinner';
 import DefaultController from './components/controllers/Default';
+import shade from './utils/shader';
 const spotify = require('spotify-node-applescript')
 import * as Vibrant from 'node-vibrant'
-import './App.css'
+import './App.scss'
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class App extends Component {
     this.getPlaybackState = this.getPlaybackState.bind(this)
     this.startPoll = this.startPoll.bind(this)
     this.checkSpotifyState = this.checkSpotifyState.bind(this)
-    this.shadeColor2 = this.shadeColor2.bind(this)
   }
 
   componentDidMount() {
@@ -32,7 +32,6 @@ class App extends Component {
 
   startPoll() {
     if(this.state.isRunning) {
-      console.log('polling')
       this.getPlaybackState()
       this.updateTrack()
     }
@@ -52,10 +51,8 @@ class App extends Component {
   }
 
   updateTrack() {
-    console.log('hwllo')
     spotify.getTrack((err, state) => {
       if (err == null) {
-        console.log(state)
         let artwork = state.artwork_url
 
         if(this.state.artwork !== artwork) {
@@ -86,11 +83,6 @@ class App extends Component {
     })
   }
 
-  shadeColor2(color, percent) {
-    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
-    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
-  }
-
   render() {
     return (
       !this.state.isRunning ? (
@@ -101,25 +93,19 @@ class App extends Component {
       ) : (
         <div
           id="container"
-          style={{background: `linear-gradient(${this.shadeColor2(this.state.bgColor, 0.3)}, ${this.state.bgColor}`}}>
+          style={{background: `linear-gradient(${shade(this.state.bgColor, 0.3)}, ${this.state.bgColor}`}}>
           <div id="viz-container">
             <VinylSpinner
               artwork_url={this.state.artwork}
+              bgColor={this.state.bgColor}
               playback={this.state.playback} />
-            {/* <VinylSpinner
-              artwork_url='test_art.jpeg'
-              playback='playing' /> */}
           </div>
-          <div id="controller-container" style={{color: this.shadeColor2(this.state.bgColor, 0.8)}}>
+          <div id="controller-container" style={{color: shade(this.state.bgColor, 0.8)}}>
             <DefaultController
               track={this.state.track}
               artist={this.state.artist}
               playback={this.state.playback}
             />
-            {/* <DefaultController
-              track='Love Story'
-              artist='Taylor Swift'
-            /> */}
           </div>
         </div>
       )

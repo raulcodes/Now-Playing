@@ -8,11 +8,11 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 200,
-    height: 325,
-    minWidth: 200,
-    minHeight: 300,
-    // maxWidth: 400,
+    width: 150,
+    height: 150,
+    minWidth: 150,
+    minHeight: 150,
+    maxWidth: 500,
     maxHeight: 500,
     acceptFirstMouse: true,
     alwaysOnTop: true,
@@ -31,7 +31,7 @@ function createWindow () {
   mainWindow.setVisibleOnAllWorkspaces(true)
 
   // Maintain square window ratio
-  mainWindow.setAspectRatio(0.62)
+  mainWindow.setAspectRatio(1)
 
   // Only show window when it's ready; prevents flash of white
   mainWindow.on('ready-to-show', () => {

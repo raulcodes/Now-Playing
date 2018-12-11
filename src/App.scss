@@ -1,6 +1,13 @@
 #container {
   width: 100vw;
   height: 100vh;
+  -webkit-app-region: drag;
+}
+
+#container:hover {
+  #controller-container {
+    opacity: 1;
+  }
 }
 
 #prompt-container {
@@ -12,11 +19,11 @@
   padding: 50%;
   box-sizing: border-box;
   position: relative;
-  -webkit-app-region: drag;
 }
 
 #controller-container {
   width: 100%;
+  opacity: 0;
   text-align: center;
   position: relative;
 }

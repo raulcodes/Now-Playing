@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 // const spotify = require('spotify-node-applescript')
-import './Default.css'
+import './Default.scss'
 
 // const playPause = () => {
 //   spotify.playPause()
