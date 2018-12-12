@@ -14,10 +14,6 @@ A Spotify Music Visualizer written in electron for MacOS. This application will 
 * [spotify-node-applescript](https://github.com/andrehaveman/spotify-node-applescript) - Applescripts used to communicate with Spotify
 * [Electron](https://electronjs.org/) - Cross-platform desktop application framework
 
-## Authors
-
-* **Raul Camacho** - *Initial work*
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
