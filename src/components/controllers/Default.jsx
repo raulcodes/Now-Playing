@@ -18,7 +18,7 @@ const DefaultController = (props) => {
   // let playBackIcon = (props.playback == 'playing') ? 'fa-pause' : 'fa-play'
 
   return(
-    <Fragment>
+    <div id="track-info">
       <h2 id="track-name">{props.track}</h2>
       <h3 id="artist-name">{props.artist}</h3>
       {/* <div id="btn-row">
@@ -35,7 +35,7 @@ const DefaultController = (props) => {
           <i className={`fas fa-forward`}></i>
         </div>
       </div> */}
-    </Fragment>
+    </div>
   )
 }
 

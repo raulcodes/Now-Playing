@@ -6,24 +6,63 @@
 
 #container:hover {
   #controller-container {
-    opacity: 1;
+    opacity: 0.75;
   }
 }
 
 #prompt-container {
+  width: 50%;
+  padding: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  color: white;
+  background: #642B73;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#start-btn:hover {
+  opacity: 0.5;
+}
+
+#start-btn {
+  opacity: 1;
   text-align: center;
+  border-radius: 50%;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-icon {
+  font-size: 2.4rem;
 }
 
 #viz-container {
   width: 50%;
   padding: 50%;
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
 }
 
 #controller-container {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   opacity: 0;
+  z-index: 15;
+  background: black;
   text-align: center;
-  position: relative;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

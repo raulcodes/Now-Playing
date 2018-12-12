@@ -68,8 +68,9 @@ class App extends Component {
           track: state.name,
           artist: state.artist,
         })
+      } else {
+        console.log(err)
       }
-      console.log(err)
     })
   }
 
@@ -87,8 +88,11 @@ class App extends Component {
     return (
       !this.state.isRunning ? (
         <div id="prompt-container">
-          <h3>Ensure that Spotify is running, then clickk</h3>
-          <button onClick={this.checkSpotifyState}>here</button>
+          <div 
+            id="start-btn"
+            onClick={this.checkSpotifyState}>
+            <i className="start-icon fa fa-arrow-right"></i>
+          </div>
         </div>
       ) : (
         <div
