@@ -35,7 +35,7 @@ class App extends Component {
       this.getPlaybackState()
       this.updateTrack()
     }
-    setTimeout(this.startPoll, 500)
+    setTimeout(this.startPoll, 1000)
   }
 
   getPlaybackState() {
