@@ -1,7 +1,7 @@
 {
   "name": "now-playing",
   "productName": "Now Playing",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A minimal Spotify Visualizer",
   "main": "main.js",
   "scripts": {
