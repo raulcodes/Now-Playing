@@ -29,6 +29,7 @@
     "css-loader": "^1.0.1",
     "electron": "^3.0.4",
     "file-loader": "^2.0.0",
+    "lodash": ">=4.17.13",
     "node-sass": "^4.11.0",
     "node-vibrant": "^3.0.0",
     "react": "^16.6.1",
@@ -38,7 +39,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {}
 }
