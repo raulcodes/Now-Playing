@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
+
 import VinylSpinner from './components/visualizers/VinylSpinner';
 import DefaultController from './components/controllers/Default';
+
 import shade from './utils/shader';
 const spotify = require('spotify-node-applescript')
 import * as Vibrant from 'node-vibrant'
+
 import './App.scss'
 
 class App extends Component {
