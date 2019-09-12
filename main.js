@@ -8,10 +8,10 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 150,
-    height: 150,
-    minWidth: 150,
-    minHeight: 150,
+    width: 250,
+    height: 250,
+    minWidth: 200,
+    minHeight: 200,
     maxWidth: 500,
     maxHeight: 500,
     acceptFirstMouse: true,
